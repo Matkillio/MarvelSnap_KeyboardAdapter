@@ -40,7 +40,8 @@ The following cards/cards effects will make Marvel Snap Keyboard Adapter harder 
 
 The following actions will make Marvel Snap Keyboard Adapter harder to use (not impossible!).
 
-- Do ANY action using your mouse (Play a card, end turn, undo a move)
+- ANY action using your mouse (Play a card, end turn, undo a move), moving cards are ok;
+- Try to play a card which you do not have enough Energy;
 
 ## Limitations
 
@@ -49,4 +50,5 @@ Here is a list of limitations the project have TODAY (some may be implemented/fi
 - Only battle is supported (no menu interactions);
 - Only 1900x1200 resolution is supported (for now);
 - It is not possible to move cards (this action can be done with your mouse without any impact);
-- You cannot undo your last move, if you change your mind you must use "Esc" key to undo all your play or finish your play with the mouse and then use "e" key to edit you hand.
+- You cannot undo your last move, if you change your mind you must use "Esc" key to undo all your play or finish your play with the mouse and then use "e" key to edit you hand;
+- You cannot "Deselect" a card.
