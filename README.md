@@ -18,6 +18,7 @@ With the Marvel Snap Keyboard Adapter project, players will have the freedom to 
 
 Still need to be written
 
+
 ## Actions that will make Marvel Snap Keyboard Adapter malfunction
 
 Basically any card that changes the number of cards in your hand will be a problem.
@@ -29,14 +30,23 @@ If Marvel Snap Keyboard Adapter start to miss all the clicks, at the start of yo
 
 The following cards/cards effects will make Marvel Snap Keyboard Adapter harder to use (not impossible!).
 
-- Cards that makes you discard cards (Eg. Blade, Gambit, Sword Master)
-- Cards that makes you draw cards (Eg. Mantis, Agent 13, Adam Warlock)
-- Cards that can return to your hand (Eg. Deadpool, SabreTooth, Kitty Pride)
-- Cards that makes other cards return to your hand (Eg. Beast, Falcon)
-- Cards played by the opponent that makes you draw/discard/play cards (Eg. Doc. Octopus, Moon Knight, Maximus)
+- Cards that makes you discard cards (Eg. Blade, Gambit, Sword Master);
+- Cards that makes you draw cards (Eg. Mantis, Agent 13, Adam Warlock);
+- Cards that can return to your hand (Eg. Deadpool, SabreTooth, Kitty Pride);
+- Cards that makes other cards return to your hand (Eg. Beast, Falcon);
+- Cards played by the opponent that makes you draw/discard/play cards (Eg. Doc. Octopus, Moon Knight, Maximus);
 
 ### Actions
 
 The following actions will make Marvel Snap Keyboard Adapter harder to use (not impossible!).
 
 - Do ANY action using your mouse (Play a card, end turn, undo a move)
+
+## Limitations
+
+Here is a list of limitations the project have TODAY (some may be implemented/fixed in future updates)
+
+- Only battle is supported (no menu interactions);
+- Only 1900x1200 resolution is supported (for now);
+- It is not possible to move cards (this action can be done with your mouse without any impact);
+- You cannot undo your last move, if you change your mind you must use "Esc" key to undo all your play or finish your play with the mouse and then use "e" key to edit you hand.
