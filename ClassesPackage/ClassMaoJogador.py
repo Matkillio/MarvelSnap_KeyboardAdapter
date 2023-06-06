@@ -1,6 +1,5 @@
 import pyautogui
-import ClassCoordenadas
-from ClassCoordenadas import MatrizCoordenadas
+from .ClassCoordenadas import MatrizCoordenadas
 from Helpers.Debug import DebugTxt as Debug
 
 class MaoJogador:

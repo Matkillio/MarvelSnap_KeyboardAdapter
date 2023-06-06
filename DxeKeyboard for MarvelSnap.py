@@ -1,6 +1,7 @@
 import time
 import pyautogui
 import keyboard
+import ClassesPackage
 from ClassesPackage import ClassMaoJogador
 from ClassesPackage import ClassTerreno
 
