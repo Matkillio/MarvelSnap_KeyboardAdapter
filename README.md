@@ -50,17 +50,17 @@ At this point, use your mouse to start a match, the Marvel Snap Keybord Adapter 
 
 ### Using Marvel Snap Keyboard Adapter
 
-Marvel Snap Keyboard Adapter allows you to use the numbers in your keyboard to select and play your cards into any desired terrain.
+Marvel Snap Keyboard Adapter allows you to use the numbers in your keyboard to select and play your cards into any desired location.
 
 #### Playing Cards
 
-Think about this scenario: You have 4 cards in your hand, and you want to play the second card into the first terrain. 
-With Marvel Snap Keyboard Adapter you just gotta press "2" (selecting the second card) and then press "1" (select the first terrain) and you are done! Second card played into First Terrain!!
+Think about this scenario: You have 4 cards in your hand, and you want to play the second card into the first location. 
+With Marvel Snap Keyboard Adapter you just gotta press "2" (selecting the second card) and then press "1" (select the first location) and you are done! Second card played into First location!!
 
 More examples:
-- Card number 6 into third terrain: Press "6" then "3";
-- Card number 1 into second terrain: Press "1" then "2";
-- Card number 3 into first terrain: Press "3" then "1";
+- Card number 6 into third location: Press "6" then "3";
+- Card number 1 into second location: Press "1" then "2";
+- Card number 3 into first location: Press "3" then "1";
 
 #### Ending your Turn
 
@@ -84,7 +84,7 @@ Played some cards but changed your mind? Want to cancel everything and start you
 
 *Note: This key will undo **all** your play, not only the last card played*
 
-#### Moving cards between terrains
+#### Moving cards between locations
 
 This feature is not supported (for now). Check "Limitations" section for others limitations information.
 
@@ -99,7 +99,7 @@ Some times the application can get a little lost, this happens when the number o
 When this happens, the application will start to miss all the clicks.
 To correct it, press "E" key and then the number of cards you have in your hand.
 
-Example: You have 4 cards in your hand, and you want to play the second card into the first terrain. You press "2" but the third card is clicked. 
+Example: You have 4 cards in your hand, and you want to play the second card into the first location. You press "2" but the third card is clicked. 
 1. Press "Esc" to cancel the play;
 2. Press "E";
 3. Press "4" (Because in this example, you have 4 cards in your hand);
@@ -107,7 +107,7 @@ Example: You have 4 cards in your hand, and you want to play the second card int
 ### Controls
 
 - "1 to 8" - Select card from hand
-- "1 to 3" - Select terrain
+- "1 to 3" - Select location
 - "e"      - Edit number of card in hand (used when the this appication starts to miss clicks)
 - "Esc"    - Cancel all the your play
 - "s"      - Snap
