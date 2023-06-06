@@ -59,7 +59,7 @@ def ResetPlay():
     global TempHand
     global SelectedCard
 
-    TempHand.setNumberOfCards(Hand.NumeroDeCartas) #Volta mao para estado original
+    TempHand.setNumberOfCards(Hand.NumberOfCards) #Volta mao para estado original
     SelectedCard = False #Seta booleado de carta selecionada para falso
     return Debug("ResetarJogada end \n")
 
@@ -91,8 +91,8 @@ def KeyOptions(PressedKey):
     match PressedKey:
         case "space": #Passar a jogada
             Debug("entrou na funcao space\n")
-            TempHand.NumeroDeCartas = TempHand.NumeroDeCartas + 1
-            Hand.setNumberOfCards(TempHand.NumeroDeCartas)
+            TempHand.NumberOfCards = TempHand.NumberOfCards + 1
+            Hand.setNumberOfCards(TempHand.NumberOfCards)
             pyautogui.click(1300, 1100)
             return Debug("space end")
         
@@ -116,7 +116,7 @@ def KeyOptions(PressedKey):
                 if event.event_type == keyboard.KEY_UP and event.name.isnumeric():
                     if(int(event.name) <= 7):
                         Debug("Tecla pressionada: " + event.name + "\n")
-                        Hand.NumeroDeCartas = int(event.name)
+                        Hand.NumberOfCards = int(event.name)
                         ResetPlay()
                         break
 
@@ -124,8 +124,8 @@ def KeyOptions(PressedKey):
         
         case "p": #Funcao debug para Debugar variaveis
             Debug("--------------------------------------------- \n")
-            Debug("Hand.NumeroDeCartas = " + str(Hand.NumeroDeCartas) + "\n")
-            Debug("TempHand.NumeroDeCartas = " + str(TempHand.NumeroDeCartas) + "\n")
+            Debug("Hand.NumberOfCards = " + str(Hand.NumberOfCards) + "\n")
+            Debug("TempHand.NumberOfCards = " + str(TempHand.NumberOfCards) + "\n")
             Debug("SelectedCard = " + str(SelectedCard) + "\n")
             Debug("--------------------------------------------- \n")
         case "r":
@@ -149,7 +149,7 @@ def MovimentOption(TeclaPressionada):
         if TerrenoSelecionado != 0:
             Debug("Terreno Valido \n")
             TerrenoSelecionado.moveTo()
-            TempHand.NumeroDeCartas = TempHand.NumeroDeCartas - 1
+            TempHand.NumberOfCards = TempHand.NumberOfCards - 1
             SelectedCard = False
 
 while True:
