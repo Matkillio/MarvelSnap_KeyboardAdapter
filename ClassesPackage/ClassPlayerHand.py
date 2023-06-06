@@ -1,21 +1,21 @@
 import pyautogui
-from .ClassCoordenadas import MatrizCoordenadas
+from .ClassCoordinates import MatrixCoordinates
 from Helpers.Debug import DebugTxt as Debug
 
 class MaoJogador:
     def __init__(self):
-        self.NumeroDeCartas = 4
+        self.NumberOfCards = 4
     
-    def setNumeroDeCartas(self, NumeroDeCartas):
-         self.NumeroDeCartas = NumeroDeCartas
+    def setNumberOfCards(self, NumberOfCards):
+         self.NumberOfCards = NumberOfCards
 
-    def EscolherCarta(self, TeclaPressionada):
+    def SelectCard(self, PressedKey):
             Debug("Escolher carta start \n")
-            if int(TeclaPressionada) <= self.NumeroDeCartas and self.NumeroDeCartas > 0:
+            if int(PressedKey) <= self.NumberOfCards and self.NumberOfCards > 0:
                 Debug("Carta valida")
-                CoordenadaCarta = MatrizCoordenadas[self.NumeroDeCartas - 1][int(TeclaPressionada) - 1]
-                Debug("Coordenadas: X = " + str(CoordenadaCarta.X) + " Y = " + str(CoordenadaCarta.Y) + "\n")
-                pyautogui.moveTo(CoordenadaCarta.X, CoordenadaCarta.Y)
+                CardCoordinate = MatrixCoordinates[self.NumberOfCards - 1][int(PressedKey) - 1]
+                Debug("Coordenadas: X = " + str(CardCoordinate.X) + " Y = " + str(CardCoordinate.Y) + "\n")
+                pyautogui.moveTo(CardCoordinate.X, CardCoordinate.Y)
                 pyautogui.mouseDown()
                 return True
             else:

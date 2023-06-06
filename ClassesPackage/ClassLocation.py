@@ -1,6 +1,6 @@
 import pyautogui
 
-class Terreno:
+class Location:
     def __init__(self, CoordinateX, CoordinateY, NumberOfCards):
         self.CoordinateX = CoordinateX
         self.CoordinateY = CoordinateY

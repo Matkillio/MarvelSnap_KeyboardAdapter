@@ -17,9 +17,9 @@ LOCATIONS_Y = 770
 N_INITIAL_CARDS = 4
 SelectedCard = False
 
-Location1 = ClassLocation.Terreno(LOCATION1_X, LOCATIONS_Y, 0)
-Location2 = ClassLocation.Terreno(LOCATION2_X, LOCATIONS_Y, 0)
-Location3 = ClassLocation.Terreno(LOCATION3_X, LOCATIONS_Y, 0)
+Location1 = ClassLocation.Location(LOCATION1_X, LOCATIONS_Y, 0)
+Location2 = ClassLocation.Location(LOCATION2_X, LOCATIONS_Y, 0)
+Location3 = ClassLocation.Location(LOCATION3_X, LOCATIONS_Y, 0)
 Hand = ClassPlayerHand.MaoJogador()
 TempHand = ClassPlayerHand.MaoJogador()
 
@@ -40,8 +40,8 @@ def ResetGame():
     global Hand
     global TempHand
     global SelectedCard
-    TempHand.setNumeroDeCartas(N_INITIAL_CARDS)
-    Hand.setNumeroDeCartas(N_INITIAL_CARDS)
+    TempHand.setNumberOfCards(N_INITIAL_CARDS)
+    Hand.setNumberOfCards(N_INITIAL_CARDS)
     SelectedCard = False
     return Debug("ResetarJogo end\n")
 
@@ -59,7 +59,7 @@ def ResetPlay():
     global TempHand
     global SelectedCard
 
-    TempHand.setNumeroDeCartas(Hand.NumeroDeCartas) #Volta mao para estado original
+    TempHand.setNumberOfCards(Hand.NumeroDeCartas) #Volta mao para estado original
     SelectedCard = False #Seta booleado de carta selecionada para falso
     return Debug("ResetarJogada end \n")
 
@@ -92,7 +92,7 @@ def KeyOptions(PressedKey):
         case "space": #Passar a jogada
             Debug("entrou na funcao space\n")
             TempHand.NumeroDeCartas = TempHand.NumeroDeCartas + 1
-            Hand.setNumeroDeCartas(TempHand.NumeroDeCartas)
+            Hand.setNumberOfCards(TempHand.NumeroDeCartas)
             pyautogui.click(1300, 1100)
             return Debug("space end")
         
@@ -141,7 +141,7 @@ def MovimentOption(TeclaPressionada):
     Debug("Moviment Option start: " + str(SelectedCard) + "\n")
 
     if not SelectedCard:
-        SelectedCard = TempHand.EscolherCarta(TeclaPressionada)
+        SelectedCard = TempHand.SelectCard(TeclaPressionada)
         Debug("Escolheu a carta: " + str(TeclaPressionada) + "\n")
     else:
         TerrenoSelecionado = GetLocation(TeclaPressionada)
