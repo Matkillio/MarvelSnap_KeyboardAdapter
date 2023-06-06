@@ -27,6 +27,7 @@ After installing Python you must install some dependencies libraries. To do this
 - pip install keyboard
 
 After all the dependencies are installed, your computer is ready to run Marvel Snap Keyboard Adapter!
+
 *Note: A script will be developed to automatically install all dependencies*
 
 ### Starting Marvel Snap Keyboard Adapter
@@ -37,11 +38,14 @@ To start Marvel Snap Keyboard Adapter you must:
 2. Unzip the code anywhere you want;
 3. Open the Command Prompt in the code you unzipped the code (Open the folder in File Explorer and write "cmd" in the address bar);
 4. Run the following command exactly as it is written here: python "DxeKeyboard for MarvelSnap.py"
+
 *Note: Steps 1 and 2 are required only for the first time you start Marvel Snap Keyboard Adapter*
 
 After this 4 steps, Marvel Snap Keyboard Adapter is ready to be used.
 At this point, use your mouse to start a match, the Marvel Snap Keybord Adapter is expecting you to have 4 cards in your hand at this point (3 from initial hand + 1 card you draw at the start of the turn)
+
 *Note2: The command prompt needs to stay open while you run this application, if you close the command prompt, the application will also stops*
+
 *Note3: I'm studying a better way to execute the application (maybe a .exe?), but for now you need to use cmd*
 
 ### Using Marvel Snap Keyboard Adapter
@@ -71,11 +75,13 @@ Snaping is easy, just press "S" key. SNAAAAAP!
 #### Retreating
 
 Not in a good situation? Bad hand and opponent just snapped? Just press "F" key, you will retreat right away!
+
 *Note: you will retreat and confirm the retreat! Be sure what you are doing before pressing F*
 
 #### Undoing all your play
 
 Played some cards but changed your mind? Want to cancel everything and start your turn again? Press "esc" key, this will undo all your play.
+
 *Note: This key will undo **all** your play, not only the last card played*
 
 #### Moving cards between terrains
@@ -100,13 +106,13 @@ Example: You have 4 cards in your hand, and you want to play the second card int
 
 ### Controls
 
-"1 to 8" - Select card from hand
-"1 to 3" - Select terrain
-"e"      - Edit number of card in hand (used when the this appication starts to miss clicks)
-"Esc"    - Cancel all the your play
-"s"      - Snap
-"r"      - Reset Marvel Snap Keyboard Adapter
-"f"      - Retreat
+- "1 to 8" - Select card from hand
+- "1 to 3" - Select terrain
+- "e"      - Edit number of card in hand (used when the this appication starts to miss clicks)
+- "Esc"    - Cancel all the your play
+- "s"      - Snap
+- "r"      - Reset Marvel Snap Keyboard Adapter
+- "f"      - Retreat
 
 ## Actions that will make Marvel Snap Keyboard Adapter malfunction
 
