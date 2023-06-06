@@ -2,28 +2,28 @@ import time
 import pyautogui
 import keyboard
 import ClassesPackage
-from ClassesPackage import ClassMaoJogador
-from ClassesPackage import ClassTerreno
+from ClassesPackage import ClassPlayerHand
+from ClassesPackage import ClassLocation
 
 if (False):
     from Debug import DebugTxt as Debug
 else:
     from Helpers.Debug import DebugOff as Debug
 
-TERRENO1_X = 746
-TERRENO2_X = 965
-TERRENO3_X = 1178
-TERRENOS_Y = 770
-N_CARTAS_INICIAIS = 4
-CartaEscolhida = False
+LOCATION1_X = 746
+LOCATION2_X = 965
+LOCATION3_X = 1178
+LOCATIONS_Y = 770
+N_INITIAL_CARDS = 4
+SelectedCard = False
 
-Terreno1 = ClassTerreno.Terreno(TERRENO1_X, TERRENOS_Y, 0)
-Terreno2 = ClassTerreno.Terreno(TERRENO2_X, TERRENOS_Y, 0)
-Terreno3 = ClassTerreno.Terreno(TERRENO3_X, TERRENOS_Y, 0)
-Mao = ClassMaoJogador.MaoJogador()
-MaoTemporaria = ClassMaoJogador.MaoJogador()
+Location1 = ClassLocation.Terreno(LOCATION1_X, LOCATIONS_Y, 0)
+Location2 = ClassLocation.Terreno(LOCATION2_X, LOCATIONS_Y, 0)
+Location3 = ClassLocation.Terreno(LOCATION3_X, LOCATIONS_Y, 0)
+Hand = ClassPlayerHand.MaoJogador()
+TempHand = ClassPlayerHand.MaoJogador()
 
-def ClicarFugir():
+def ClickRetreat():
     pyautogui.click(587, 1117)
     time.sleep(0.2)
     pyautogui.click(829, 885)
@@ -35,17 +35,17 @@ def LongClick(X, Y):
     time.sleep(0.2) 
     pyautogui.mouseUp()
 
-def ResetarJogo():
+def ResetGame():
     Debug("ResetarJogo start\n")
-    global Mao
-    global MaoTemporaria
-    global CartaEscolhida
-    MaoTemporaria.setNumeroDeCartas(N_CARTAS_INICIAIS)
-    Mao.setNumeroDeCartas(N_CARTAS_INICIAIS)
-    CartaEscolhida = False
+    global Hand
+    global TempHand
+    global SelectedCard
+    TempHand.setNumeroDeCartas(N_INITIAL_CARDS)
+    Hand.setNumeroDeCartas(N_INITIAL_CARDS)
+    SelectedCard = False
     return Debug("ResetarJogo end\n")
 
-def ClicarCancelarJogada():
+def ClickCancelPlay():
     pyautogui.moveTo(1128, 133) #Move para area vazia
     pyautogui.mouseUp() #Solta o mouse, fazer isso evita que o mouse ja esteja clicado para o proximo passo
     LongClick(961, 1115) #Clica na mana
@@ -53,46 +53,46 @@ def ClicarCancelarJogada():
     pyautogui.click(958, 996) #Clica em desfazer todos os movimentos
     return
 
-def ResetarJogada():
+def ResetPlay():
     Debug("entrou na funcao ResetarJogada\n")
-    global Mao
-    global MaoTemporaria
-    global CartaEscolhida
+    global Hand
+    global TempHand
+    global SelectedCard
 
-    MaoTemporaria.setNumeroDeCartas(Mao.NumeroDeCartas) #Volta mao para estado original
-    CartaEscolhida = False #Seta booleado de carta selecionada para falso
+    TempHand.setNumeroDeCartas(Hand.NumeroDeCartas) #Volta mao para estado original
+    SelectedCard = False #Seta booleado de carta selecionada para falso
     return Debug("ResetarJogada end \n")
 
-def GetTerreno(TerrenoSelecionado):
+def GetLocation(SelectedLocation):
     Debug("GetTerreno start \n")
-    TerrenoRetorno = 0
+    ReturnLocation = 0
 
     #Só existem 3 terrenos
-    match TerrenoSelecionado:
+    match SelectedLocation:
         case "1":
-            global Terreno1
-            TerrenoRetorno = Terreno1
+            global Location1
+            ReturnLocation = Location1
         case "2":
-            global Terreno2
-            TerrenoRetorno = Terreno2
+            global Location2
+            ReturnLocation = Location2
         case "3":
-            global Terreno3
-            TerrenoRetorno = Terreno3
+            global Location3
+            ReturnLocation = Location3
         case _:
-            TerrenoRetorno = 0
+            ReturnLocation = 0
     Debug("GetTerreno end \n")
-    return TerrenoRetorno
+    return ReturnLocation
 
-def KeyOptions(TeclaPressionada):
-    global Mao
-    global MaoTemporaria
-    global CartaEscolhida
+def KeyOptions(PressedKey):
+    global Hand
+    global TempHand
+    global SelectedCard
 
-    match TeclaPressionada:
+    match PressedKey:
         case "space": #Passar a jogada
             Debug("entrou na funcao space\n")
-            MaoTemporaria.NumeroDeCartas = MaoTemporaria.NumeroDeCartas + 1
-            Mao.setNumeroDeCartas(MaoTemporaria.NumeroDeCartas)
+            TempHand.NumeroDeCartas = TempHand.NumeroDeCartas + 1
+            Hand.setNumeroDeCartas(TempHand.NumeroDeCartas)
             pyautogui.click(1300, 1100)
             return Debug("space end")
         
@@ -101,8 +101,8 @@ def KeyOptions(TeclaPressionada):
         
         case "esc": #Cancelar toda a jogada
             Debug("entrou na funcao esc\n")
-            ResetarJogada()
-            ClicarCancelarJogada()
+            ResetPlay()
+            ClickCancelPlay()
             return Debug("esc end \n")
         
         case "e": #Editar numero de cartas na mao
@@ -116,44 +116,41 @@ def KeyOptions(TeclaPressionada):
                 if event.event_type == keyboard.KEY_UP and event.name.isnumeric():
                     if(int(event.name) <= 7):
                         Debug("Tecla pressionada: " + event.name + "\n")
-                        Mao.NumeroDeCartas = int(event.name)
-                        ResetarJogada()
+                        Hand.NumeroDeCartas = int(event.name)
+                        ResetPlay()
                         break
 
             return Debug("e end \n")
         
         case "p": #Funcao debug para Debugar variaveis
             Debug("--------------------------------------------- \n")
-            Debug("Mao.NumeroDeCartas = " + str(Mao.NumeroDeCartas) + "\n")
-            Debug("MaoTemporaria.NumeroDeCartas = " + str(MaoTemporaria.NumeroDeCartas) + "\n")
-            Debug("CartaEscolhida = " + str(CartaEscolhida) + "\n")
+            Debug("Hand.NumeroDeCartas = " + str(Hand.NumeroDeCartas) + "\n")
+            Debug("TempHand.NumeroDeCartas = " + str(TempHand.NumeroDeCartas) + "\n")
+            Debug("SelectedCard = " + str(SelectedCard) + "\n")
             Debug("--------------------------------------------- \n")
         case "r":
-            ResetarJogo()
+            ResetGame()
 
         case "f":
-            ClicarFugir()
-
-
-
+            ClickRetreat()
 
 def MovimentOption(TeclaPressionada):
-    global Mao
-    global CartaEscolhida
+    global Hand
+    global SelectedCard
 
-    Debug("Moviment Option start: " + str(CartaEscolhida) + "\n")
+    Debug("Moviment Option start: " + str(SelectedCard) + "\n")
 
-    if not CartaEscolhida:
-        CartaEscolhida = MaoTemporaria.EscolherCarta(TeclaPressionada)
+    if not SelectedCard:
+        SelectedCard = TempHand.EscolherCarta(TeclaPressionada)
         Debug("Escolheu a carta: " + str(TeclaPressionada) + "\n")
     else:
-        TerrenoSelecionado = GetTerreno(TeclaPressionada)
+        TerrenoSelecionado = GetLocation(TeclaPressionada)
         Debug("Escolheu o Terreno: " + str(TeclaPressionada) + "\n")
         if TerrenoSelecionado != 0:
             Debug("Terreno Valido \n")
             TerrenoSelecionado.moveTo()
-            MaoTemporaria.NumeroDeCartas = MaoTemporaria.NumeroDeCartas - 1
-            CartaEscolhida = False
+            TempHand.NumeroDeCartas = TempHand.NumeroDeCartas - 1
+            SelectedCard = False
 
 while True:
     Debug("Aguardando tecla inicial... \n")
@@ -166,6 +163,3 @@ while True:
         else:
             Debug("Numerico \n")
             MovimentOption(event.name)
-    
-            
-            
