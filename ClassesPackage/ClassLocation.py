@@ -1,11 +1,11 @@
 import pyautogui
 
 class Terreno:
-    def __init__(self, CoordenadaX, CoordenadaY, NumeroDeCartas):
-        self.CoordenadaX = CoordenadaX
-        self.CoordenadaY = CoordenadaY
-        self.NumeroDeCartas = NumeroDeCartas
+    def __init__(self, CoordinateX, CoordinateY, NumberOfCards):
+        self.CoordinateX = CoordinateX
+        self.CoordinateY = CoordinateY
+        self.NumberOfCards = NumberOfCards
     
     def moveTo(self):
-        pyautogui.moveTo(self.CoordenadaX, self.CoordenadaY)
+        pyautogui.moveTo(self.CoordinateX, self.CoordinateY)
         pyautogui.mouseUp()
