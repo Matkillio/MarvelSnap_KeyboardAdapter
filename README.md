@@ -98,6 +98,16 @@ Example: You have 4 cards in your hand, and you want to play the second card int
 2. Press "E";
 3. Press "4" (Because in this example, you have 4 cards in your hand);
 
+### Controls
+
+"1 to 8" - Select card from hand
+"1 to 3" - Select terrain
+"e"      - Edit number of card in hand (used when the this appication starts to miss clicks)
+"Esc"    - Cancel all the your play
+"s"      - Snap
+"r"      - Reset Marvel Snap Keyboard Adapter
+"f"      - Retreat
+
 ## Actions that will make Marvel Snap Keyboard Adapter malfunction
 
 Basically any card that changes the number of cards in your hand will be a problem.
