@@ -36,7 +36,6 @@ def LongClick(X, Y):
     pyautogui.mouseUp()
 
 def ResetGame():
-    Debug("ResetarJogo start\n")
     global Hand
     global TempHand
     global SelectedCard
@@ -46,28 +45,25 @@ def ResetGame():
     return Debug("ResetarJogo end\n")
 
 def ClickCancelPlay():
-    pyautogui.moveTo(1128, 133) #Move para area vazia
-    pyautogui.mouseUp() #Solta o mouse, fazer isso evita que o mouse ja esteja clicado para o proximo passo
-    LongClick(961, 1115) #Clica na mana
-    time.sleep(0.2) #Aguarda menu da mana abrir
-    pyautogui.click(958, 996) #Clica em desfazer todos os movimentos
+    pyautogui.moveTo(1128, 133) #Move any selected card to an empty space
+    pyautogui.mouseUp() #This avoids the mouse being clicked down for the next step
+    LongClick(961, 1115) #Click on your energy
+    time.sleep(0.2) #Waits for the menu to open
+    pyautogui.click(958, 996) #Click undo moves
     return
 
 def ResetPlay():
-    Debug("entrou na funcao ResetarJogada\n")
     global Hand
     global TempHand
     global SelectedCard
 
-    TempHand.setNumberOfCards(Hand.NumberOfCards) #Volta mao para estado original
-    SelectedCard = False #Seta booleado de carta selecionada para falso
-    return Debug("ResetarJogada end \n")
+    TempHand.setNumberOfCards(Hand.NumberOfCards) #Returns hand to its original state
+    SelectedCard = False #card not selected
+    return Debug("ResetPlay end \n")
 
 def GetLocation(SelectedLocation):
-    Debug("GetTerreno start \n")
     ReturnLocation = 0
 
-    #Só existem 3 terrenos
     match SelectedLocation:
         case "1":
             global Location1
@@ -80,7 +76,7 @@ def GetLocation(SelectedLocation):
             ReturnLocation = Location3
         case _:
             ReturnLocation = 0
-    Debug("GetTerreno end \n")
+    Debug("GetLocation end \n")
     return ReturnLocation
 
 def KeyOptions(PressedKey):
@@ -89,77 +85,72 @@ def KeyOptions(PressedKey):
     global SelectedCard
 
     match PressedKey:
-        case "space": #Passar a jogada
-            Debug("entrou na funcao space\n")
+        case "space": #End turn
             TempHand.NumberOfCards = TempHand.NumberOfCards + 1
             Hand.setNumberOfCards(TempHand.NumberOfCards)
             pyautogui.click(1300, 1100)
             return Debug("space end")
         
-        case "s": #Dar Snap
+        case "s": #Snap
             return pyautogui.click(961, 115)
         
-        case "esc": #Cancelar toda a jogada
-            Debug("entrou na funcao esc\n")
+        case "esc": #Cancel whole play
             ResetPlay()
             ClickCancelPlay()
             return Debug("esc end \n")
         
-        case "e": #Editar numero de cartas na mao
-            Debug("entrou na funcao e \n")
-            #ClicarCancelarJogada()
-
+        case "e": #Edit number of card in hand
             while True:
-                Debug("Aguardando tecla para editar a mao... \n")
+                Debug("Waiting number of cards - Editing hand... \n")
                 event = keyboard.read_event()
 
                 if event.event_type == keyboard.KEY_UP and event.name.isnumeric():
                     if(int(event.name) <= 7):
-                        Debug("Tecla pressionada: " + event.name + "\n")
+                        Debug("Pressed Key: " + event.name + "\n")
                         Hand.NumberOfCards = int(event.name)
                         ResetPlay()
                         break
 
             return Debug("e end \n")
         
-        case "p": #Funcao debug para Debugar variaveis
+        case "p": #Function to debug variables
             Debug("--------------------------------------------- \n")
             Debug("Hand.NumberOfCards = " + str(Hand.NumberOfCards) + "\n")
             Debug("TempHand.NumberOfCards = " + str(TempHand.NumberOfCards) + "\n")
             Debug("SelectedCard = " + str(SelectedCard) + "\n")
             Debug("--------------------------------------------- \n")
-        case "r":
+        case "r": #Reset hand, sets number of cards to 4
             ResetGame()
 
-        case "f":
+        case "f": #Retreat
             ClickRetreat()
 
-def MovimentOption(TeclaPressionada):
+def MovimentOption(PressedKey):
     global Hand
     global SelectedCard
 
     Debug("Moviment Option start: " + str(SelectedCard) + "\n")
 
     if not SelectedCard:
-        SelectedCard = TempHand.SelectCard(TeclaPressionada)
-        Debug("Escolheu a carta: " + str(TeclaPressionada) + "\n")
+        SelectedCard = TempHand.SelectCard(PressedKey)
+        Debug("Card selected: " + str(PressedKey) + "\n")
     else:
-        TerrenoSelecionado = GetLocation(TeclaPressionada)
-        Debug("Escolheu o Terreno: " + str(TeclaPressionada) + "\n")
-        if TerrenoSelecionado != 0:
-            Debug("Terreno Valido \n")
-            TerrenoSelecionado.moveTo()
+        SelectedLocation = GetLocation(PressedKey)
+        Debug("Selected Location: " + str(PressedKey) + "\n")
+        if SelectedLocation != 0:
+            Debug("Valid Location \n")
+            SelectedLocation.moveTo()
             TempHand.NumberOfCards = TempHand.NumberOfCards - 1
             SelectedCard = False
 
 while True:
-    Debug("Aguardando tecla inicial... \n")
+    Debug("Waiting initial input... \n")
     event = keyboard.read_event()
     if event.event_type == keyboard.KEY_UP:
-        Debug("Tecla pressionada: " + event.name + "\n")
+        Debug("Pressed key: " + event.name + "\n")
         if not event.name.isnumeric():
-            Debug("Caracteres \n")
+            Debug("Character \n")
             KeyOptions(event.name)
         else:
-            Debug("Numerico \n")
+            Debug("Number \n")
             MovimentOption(event.name)
