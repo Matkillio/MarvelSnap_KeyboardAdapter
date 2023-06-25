@@ -20,8 +20,8 @@ SelectedCard = False
 Location1 = ClassLocation.Location(LOCATION1_X, LOCATIONS_Y, 0)
 Location2 = ClassLocation.Location(LOCATION2_X, LOCATIONS_Y, 0)
 Location3 = ClassLocation.Location(LOCATION3_X, LOCATIONS_Y, 0)
-Hand = ClassPlayerHand.MaoJogador()
-TempHand = ClassPlayerHand.MaoJogador()
+Hand = ClassPlayerHand.PlayerHand()
+TempHand = ClassPlayerHand.PlayerHand()
 
 def ClickRetreat():
     pyautogui.click(587, 1117)
