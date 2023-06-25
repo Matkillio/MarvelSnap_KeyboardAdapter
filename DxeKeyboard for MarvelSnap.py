@@ -4,16 +4,20 @@ import keyboard
 import ClassesPackage
 from ClassesPackage import ClassPlayerHand
 from ClassesPackage import ClassLocation
+import Helpers
+from Helpers import CoordinatesConverter as Converter
 
 if (False):
     from Debug import DebugTxt as Debug
 else:
     from Helpers.Debug import DebugOff as Debug
 
-LOCATION1_X = 746
-LOCATION2_X = 965
-LOCATION3_X = 1178
-LOCATIONS_Y = 770
+cc = Converter.CoordinatesConverter()
+
+LOCATION1_X = cc.ConvertedX(746)
+LOCATION2_X = cc.ConvertedX(965)
+LOCATION3_X = cc.ConvertedX(1178)
+LOCATIONS_Y = cc.ConvertedY(770)
 N_INITIAL_CARDS = 4
 SelectedCard = False
 
@@ -24,9 +28,9 @@ Hand = ClassPlayerHand.PlayerHand()
 TempHand = ClassPlayerHand.PlayerHand()
 
 def ClickRetreat():
-    pyautogui.click(587, 1117)
+    pyautogui.click(cc.ConvertedXY(587, 1117))
     time.sleep(0.2)
-    pyautogui.click(829, 885)
+    pyautogui.click(cc.ConvertedXY(829, 885))
 
 def LongClick(X, Y):
     pyautogui.moveTo(X,Y)
@@ -45,11 +49,12 @@ def ResetGame():
     return Debug("ResetarJogo end\n")
 
 def ClickCancelPlay():
-    pyautogui.moveTo(1128, 133) #Move any selected card to an empty space
+    pyautogui.moveTo(cc.ConvertedXY(1128, 133)) #Move any selected card to an empty space
     pyautogui.mouseUp() #This avoids the mouse being clicked down for the next step
-    LongClick(961, 1115) #Click on your energy
+    LongClick(cc.ConvertedX(961),cc.ConvertedY(1115)) #Click on your energy
     time.sleep(0.2) #Waits for the menu to open
-    pyautogui.click(958, 996) #Click undo moves
+    pyautogui.click(cc.ConvertedXY(958, 996)) #Click undo moves
+    pyautogui.click(cc.ConvertedXY(1285, 553)) #Click outside menu to return to gameplay
     return
 
 def ResetPlay():
@@ -88,11 +93,11 @@ def KeyOptions(PressedKey):
         case "space": #End turn
             TempHand.NumberOfCards = TempHand.NumberOfCards + 1
             Hand.setNumberOfCards(TempHand.NumberOfCards)
-            pyautogui.click(1300, 1100)
+            pyautogui.click(cc.ConvertedXY(1300, 1100))
             return Debug("space end")
         
         case "s": #Snap
-            return pyautogui.click(961, 115)
+            return pyautogui.click(cc.ConvertedXY(961, 115))
         
         case "esc": #Cancel whole play
             ResetPlay()
