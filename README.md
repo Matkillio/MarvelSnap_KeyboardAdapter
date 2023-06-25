@@ -1,6 +1,6 @@
 # Marvel Snap Keyboard Adapter
 
-The Marvel Snap Keyboard Adapter is a Python repository containing a project aimed at adapting the controls of a game called Marvel Snap for keyboard input. This project is currently under development and is designed to work specifically with a screen resolution of 1900 by 1200 pixels.
+The Marvel Snap Keyboard Adapter is a Python repository containing a project aimed at adapting the controls of a game called Marvel Snap for keyboard input. This project is currently under development but is already functional with some limitations.
 
 ## Description
 
@@ -8,7 +8,7 @@ The goal of this adaptation project is to provide players with an alternative in
 
 The repository houses the necessary Python scripts, modules, and resources required to implement the keyboard adapter. Allowing players to perform actions such as movement and interactions within the Marvel Snap game battles.
 
-While the project is still in progress, the initial implementation supports the screen resolution of 1900 by 1200 pixels. Development efforts are focused on ensuring compatibility with different resolutions and aspect ratios. Future updates may expand the project to support additional screen resolutions commonly used by players.
+Development efforts are now focused on adapting all game mechanics, ensuring that every possible action is supported and can be played using the keyboard. I'm also focused on creating a easier way to install all dependencies/running Marvel Snap Keyboard Adapter (maybe a compiled executable?)
 
 Contributions from the open-source community are welcomed and encouraged. Developers can actively participate in improving the keyboard adapter project by submitting bug reports, feature requests, or even contributing code to enhance its functionality and compatibility.
 
@@ -106,7 +106,7 @@ Example: You have 4 cards in your hand, and you want to play the second card int
 
 ### Controls
 
-- "1 to 8" - Select card from hand
+- "1 to 7" - Select card from hand
 - "1 to 3" - Select location
 - "e"      - Edit number of card in hand (used when the this appication starts to miss clicks)
 - "Esc"    - Cancel all the your play
@@ -135,7 +135,7 @@ The following cards/cards effects will make Marvel Snap Keyboard Adapter harder 
 
 The following actions will make Marvel Snap Keyboard Adapter harder to use (not impossible!).
 
-- ANY action using your mouse (Play a card, end turn, undo a move), moving cards are ok;
+- ANY action using your mouse (Play a card, end turn, undo a move), moving cards is ok;
 - Try to play a card which you do not have enough Energy;
 
 ## Limitations
@@ -143,7 +143,6 @@ The following actions will make Marvel Snap Keyboard Adapter harder to use (not 
 Here is a list of limitations the project have TODAY (some may be implemented/fixed in future updates)
 
 - Only battle is supported (no menu interactions);
-- Only 1900x1200 resolution is supported (for now);
 - It is not possible to move cards (this action can be done with your mouse without any impact);
 - You cannot undo your last move, if you change your mind you must use "Esc" key to undo all your play or finish your play with the mouse and then use "e" key to edit you hand;
 - You cannot "Deselect" a card.
