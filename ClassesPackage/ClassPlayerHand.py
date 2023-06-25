@@ -1,7 +1,7 @@
 import pyautogui
 from .ClassCoordinates import MatrixCoordinates
 
-class MaoJogador:
+class PlayerHand:
     def __init__(self):
         self.NumberOfCards = 4
     

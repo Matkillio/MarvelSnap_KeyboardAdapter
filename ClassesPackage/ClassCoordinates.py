@@ -1,4 +1,4 @@
-import Helpers.CoordenatesConverter as CoordenatesConverter
+import Helpers.CoordinatesConverter as CoordinatesConverter
 
 class Coordinates:
     def __init__(self, X, Y):
