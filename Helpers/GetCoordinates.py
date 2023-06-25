@@ -9,7 +9,7 @@ def check_action(event):
         if event == key:
             x = pyautogui.position().x
             y = pyautogui.position().y
-            with open("Coordenadas.txt", "a") as arquivo:
+            with open("Coordinates.txt", "a") as arquivo:
                 arquivo.write("x = " + str(x) + " y = " + str(y) + "\n")
 
 while True:
