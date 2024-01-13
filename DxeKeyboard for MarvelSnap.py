@@ -14,9 +14,9 @@ else:
 
 cc = Converter.CoordinatesConverter()
 
-LOCATION1_X = cc.ConvertedX(746)
-LOCATION2_X = cc.ConvertedX(965)
-LOCATION3_X = cc.ConvertedX(1178)
+LOCATION1_X = cc.ConvertedX(711)
+LOCATION2_X = cc.ConvertedX(967)
+LOCATION3_X = cc.ConvertedX(1246)
 LOCATIONS_Y = cc.ConvertedY(770)
 N_INITIAL_CARDS = 4
 SelectedCard = False
@@ -28,9 +28,9 @@ Hand = ClassPlayerHand.PlayerHand()
 TempHand = ClassPlayerHand.PlayerHand()
 
 def ClickRetreat():
-    pyautogui.click(cc.ConvertedXY(587, 1117))
+    pyautogui.click(cc.ConvertedXY(172, 1105))
     time.sleep(0.2)
-    pyautogui.click(cc.ConvertedXY(829, 885))
+    pyautogui.click(cc.ConvertedXY(1086, 890))
 
 def LongClick(X, Y):
     pyautogui.moveTo(X,Y)
@@ -49,12 +49,12 @@ def ResetGame():
     return Debug("ResetarJogo end\n")
 
 def ClickCancelPlay():
-    pyautogui.moveTo(cc.ConvertedXY(1128, 133)) #Move any selected card to an empty space
+    pyautogui.moveTo(cc.ConvertedXY(1679, 365)) #Move any selected card to an empty space
     pyautogui.mouseUp() #This avoids the mouse being clicked down for the next step
-    LongClick(cc.ConvertedX(961),cc.ConvertedY(1115)) #Click on your energy
-    time.sleep(0.2) #Waits for the menu to open
-    pyautogui.click(cc.ConvertedXY(958, 996)) #Click undo moves
-    pyautogui.click(cc.ConvertedXY(1285, 553)) #Click outside menu to return to gameplay
+    LongClick(cc.ConvertedX(310),cc.ConvertedY(776)) #Click on your energy
+    time.sleep(0.1) #Waits for the menu to open
+    pyautogui.click(cc.ConvertedXY(952, 1003)) #Click undo moves
+    pyautogui.click(cc.ConvertedXY(1679, 365)) #Click outside menu to return to gameplay
     return
 
 def ResetPlay():
@@ -90,14 +90,15 @@ def KeyOptions(PressedKey):
     global SelectedCard
 
     match PressedKey:
-        case "space": #End turn
-            TempHand.NumberOfCards = TempHand.NumberOfCards + 1
-            Hand.setNumberOfCards(TempHand.NumberOfCards)
-            pyautogui.click(cc.ConvertedXY(1300, 1100))
-            return Debug("space end")
-        
+        case "space" | "enter": #End turn
+            CardsNumber = TempHand.NumberOfCards + 1
+            if(CardsNumber <= 7):
+                TempHand.NumberOfCards = CardsNumber
+                Hand.setNumberOfCards(TempHand.NumberOfCards)
+            pyautogui.click(cc.ConvertedXY(1730, 1105))
+            return Debug("enter end")
         case "s": #Snap
-            return pyautogui.click(cc.ConvertedXY(961, 115))
+            return pyautogui.click(cc.ConvertedXY(1588, 775))
         
         case "esc": #Cancel whole play
             ResetPlay()
